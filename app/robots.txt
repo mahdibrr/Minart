@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bluebelldesign.tn/sitemap.xml
+
+# Disallow admin and auth pages
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /api/
+
+# Crawl delay
+Crawl-delay: 1
