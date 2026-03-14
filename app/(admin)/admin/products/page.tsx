@@ -11,12 +11,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { ProductForm } from "@/components/admin/product-form";
 
 export default function AdminProductsPage() {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [showDialog, setShowDialog] = useState(false);
-  const [editingProduct, setEditingProduct] = useState(undefined);
+  const [editingProduct, setEditingProduct] = useState<Product | undefined>(undefined);
 
   useEffect(() => {
     fetchProducts();
@@ -45,7 +45,7 @@ export default function AdminProductsPage() {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: string) => {
     if (!confirm("Are you sure?")) return;
     try {
       await fetch("/api/admin/products/" + id, { method: "DELETE" });
@@ -57,7 +57,7 @@ export default function AdminProductsPage() {
   };
 
 
-  const handleEdit = (product) => {
+  const handleEdit = (product: Product) => {
     setEditingProduct(product);
     setShowDialog(true);
   };
